@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="SongBinding">
+
+        <variable
+            name="userViewModel"
+            type="com.example.testdatabinding.UserViewModel" />
+
+        <variable
+            name="presenter"
+            type="com.example.testdatabinding.MainActivity.Presenter" />
+        <import type="android.view.View"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:hint="请输入 Name"
+            android:onTextChanged="@{presenter::onTextChanged}"
+            android:textColor="#ffffff"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/edit_name"
+            android:layout_marginTop="30dp"
+            android:background="#ffffaa"
+            android:gravity="center"
+            android:onClick="@{presenter.onClick}"
+            android:text="@{userViewModel.name}"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_name"
+            android:background="#ffffcc"
+            android:gravity="center"
+            android:onClick="@{(view) -> presenter.onClickBinding(userViewModel,view)}"
+            android:text='@{userViewModel.age+""}'
+            android:textColor="#324568"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_age"
+            android:background="#ffffa0"
+            android:gravity="center"
+            android:text="@{userViewModel.nickName ?? userViewModel.id}"
+            android:textColor="#324568"
+            android:textStyle="bold"
+            android:visibility='@{userViewModel.visible.get() ? View.VISIBLE:View.GONE}' />
+
+        <include
+            layout="@layout/layout_include"
+            bind:userViewModel="@{userViewModel}"
+            bind:presenter="@{presenter}"/>
+
+        <ViewStub
+            android:id="@+id/view_stub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_include"
+            android:layout_centerHorizontal="true"
+            android:layout="@layout/viewstub" />
+    </RelativeLayout>
+</layout>

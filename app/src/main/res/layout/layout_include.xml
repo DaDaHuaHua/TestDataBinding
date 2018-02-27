@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.example.testdatabinding.UserViewModel" />
+        <variable
+            name="presenter"
+            type="com.example.testdatabinding.MainActivity.Presenter" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/layout_include"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_id">
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/tv_age"
+            android:background="#ffcccc"
+            android:gravity="center"
+            android:text="@{ userViewModel.id ?? userViewModel.nickName}"
+            android:onClick='@{(v)->presenter.onClick(v,userViewModel.childs["song"])}'
+            android:textColor="#324568"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+</layout>

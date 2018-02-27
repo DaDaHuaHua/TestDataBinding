@@ -1,5 +1,6 @@
 package com.example.testdatabinding;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.testdatabinding.databinding.SongBinding;
+import com.example.testdatabinding.recycler.ListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -54,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
         public void onClickBinding(UserViewModel user, View v) {
             Toast.makeText(MainActivity.this, v.toString(), Toast.LENGTH_SHORT).show();
+        }
+
+        public void onClickToList(View v){
+            startActivity(new Intent(MainActivity.this ,ListActivity.class));
         }
 
     }

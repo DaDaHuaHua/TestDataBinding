@@ -8,8 +8,8 @@ import android.databinding.ObservableMap;
  * <p> Created by 宋华 on 2018/2/26.
  */
 public class UserViewModel extends User {
-    public String name = "song";
-    public int age = 10;
+    public String name ;
+    public int age ;
     public ObservableBoolean visible = new ObservableBoolean();
     public String nickName;
     public ObservableArrayMap<String ,String > childs = new ObservableArrayMap<>();

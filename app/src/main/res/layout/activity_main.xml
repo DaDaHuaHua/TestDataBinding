@@ -80,5 +80,16 @@
             android:layout_below="@+id/layout_include"
             android:layout_centerHorizontal="true"
             android:layout="@layout/viewstub" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="跳转ListActivity"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:onClick="@{presenter::onClickToList}"
+            android:background="#ff99cc"/>
     </RelativeLayout>
 </layout>
